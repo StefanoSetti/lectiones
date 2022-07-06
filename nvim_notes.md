@@ -5,9 +5,11 @@ This files holdes notes taken to learn about nvim (NeoVim), lua and packer.
 The reference for these notes comes from this playlist:
 https://www.youtube.com/playlist?list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ
 
+
 ## [1] Introduction
 
 Just an overwiew of the final outcome of the playlist
+
 
 ## [2] nvim Options
 
@@ -44,6 +46,7 @@ Note that there is no such `lua.vnmrd.<file>.lua` path definition, this is impli
 
 The position of the file is `/home/vnmRD/.config/nvim/init.lua`.
 
+
 ## [3] Custom Keymaps
 
 The `keymaps.lua` files define custom keymaps that overwrites the standard ones. 
@@ -69,4 +72,72 @@ The position of the file is `/home/vnmRD/.config/nvim/lua/vnmrd/keymaps.lua`.
 - A: alt key.
 - buffer: it is a memory "chunk" that stores another opended file (like tabs, but tabs in nvim is something else).
 
+
+## [4] Plugins & Co.
+
+In this case the **plug-in manager** in use is `packer.nvim`, enterly written in lua.
+Packer brings some commands with it:
+
+- `:PackerStatus`: Shows the installed plugins.
+- `:PackerUpdate`: Updates plugins.
+- `:PackerSync`: Updates & compile a file used by packer to speedup install.
+
+
+### plugins.lua 
+In plugins file is located in `/home/vnmRD/.config/nvim/lua/vnmrd/plugins.lua`.
+
+In the file it is frequent to implement **protected calls** (`pcall(<command>)`), those calls are essentially try-catch.
+With the keyword `use` it is possible do "import" the actual plugins for nvim, the semantic to call it is the following:
+
+```lua
+use "<user>/<repo>" -- Usually a in-line comment that describes the plugin is added. 
+```
+
+For any plugin is possible to import it via a table:
+
+```lua
+use {
+    '<user>/<repo>',
+    <option> = <value>,
+    ...
+    <option> = <value>,
+}
+```
+So it is possible to specify multiple options for that specific plugin (read documentation for further findings).
+
+The recommended plugins are (usually dependencies for many other plugins):
+
+- `packer.nvim`: handles the packer updates.
+- `popup.nvim`: Popup API implementation.
+- `plenary.nvim`: useful and common lua functions.
+
+### Data directory
+
+Usually this directory is situated at `~/.local/share/nvim/`.
+This directory is where all the plugings save their data.
+The plugins are saved in `~/.local/share/nvim/site`.
+In `site` are situated two directories:
+
+- start: plugins that run on start-up.
+- opt: plugins that has the `opt` flag set as `true`. 
+       Those are only loaded when "binded" commands (defined in the `plugins.lua`) are executed. 
+
+If a plugin is not loaded during startup, it measn that it will be loaded in a **lazy loading** fashion.
+Note that even is it might sounds good to load plugins after startup, it might worsen the perfrmances.
+
+### Plugin directory
+
+Additionally a new directory has been created: `/home/vnmRD/.config/nvim/plugin`.
+It contains `packer_compiled.lua`, this file is used by packer, nothing important for the user, it speedup plugins loading.
+When packer has something wrong, it might be suggested to delete the file.
+Gitignore this file.
+
+### Lazy loading
+
+A lazy loaded plugin is a plugin that is loaded only when one of the specified command in the use expression is executed.
+It myght be triggered by events too, but it bught be tricky to use it properly.
+
+### Vim Events
+
+It is possible to read about events and the types ov events available by executing the command `:help autocmd`.
 
