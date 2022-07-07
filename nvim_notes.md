@@ -149,4 +149,11 @@ The most immediate way is to use the command `:colorscheme <scheme>`, the scheme
 To use more colorful schemas, in the `option.lua` it is necessary to add the `termguicolors = true` option.
 To have a persistent colorscheme it is necessary to insert in the `init.lua` file the command `vim.cmd "colorscheme <colorscheme>"`.
 
-It is possible to add colorschemes as plugin.
+It is possible to add colorschemes as plugin, just add in in `plugins.lua`. The video presents plenty custom colorschemes.
+In case the colorsheme requested is not present, the nvim config will break, so to solve this it is possible to use a file (`colorscheme.lua`) and not a straight forward command.
+In this file as a bakcup situation, the default schema is used, all thanks to a `pcall`.
+
+
+## [6] Completition
+
+
