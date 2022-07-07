@@ -141,3 +141,12 @@ It myght be triggered by events too, but it bught be tricky to use it properly.
 
 It is possible to read about events and the types ov events available by executing the command `:help autocmd`.
 
+
+## [5] Colorscheme
+
+To change colorscheme there are multiple ways to do that.
+The most immediate way is to use the command `:colorscheme <scheme>`, the scheme can be chosen in the menu via `<tab>` key, note that the new scheme won't persist.
+To use more colorful schemas, in the `option.lua` it is necessary to add the `termguicolors = true` option.
+To have a persistent colorscheme it is necessary to insert in the `init.lua` file the command `vim.cmd "colorscheme <colorscheme>"`.
+
+It is possible to add colorschemes as plugin.
