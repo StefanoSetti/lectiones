@@ -183,4 +183,15 @@ TODO
 
 ## [8] LSP
 
+LSP let you know what is wrong in your code and via cmp suggests for snippets.
+Useful commands are `:LspInstallInfo` to see what can be installed, the installed LSP and install LSPs, another is `LspInfo` to see which LSP is active.
 
+
+To use LSP it is needed to add in the `plugins.lua` file the LSP installer and a bootstrapper is welcome to be added.
+Additionally, a cmp plugin to show LSP suggestion can be added to the plugins file,
+
+
+The configs for LSPs are not in a file but in a directory, note that the declaration in `init.lua` will be the same for a file: `require "vnmrd.lsp"`.
+When adding a directory in a `init.lua` file, it looks for a init file in the directory.
+
+The `lsp-installer.lua` to install LSPs, inspired from https://github.com/williamboman/nvim-lsp-installer.
