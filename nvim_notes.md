@@ -156,4 +156,31 @@ In this file as a bakcup situation, the default schema is used, all thanks to a 
 
 ## [6] Completition
 
+The plugin used for completition will be `nvim-cmp`, with this some other pluguins will be used to complete the functinality of the completition plugin.
+Additinally, something required is a snippet engine, in this case will be used luasnip.
+
+Once installed, when writing some code, a window will show up, that suggests the snippets added by snippet plugin.
+Note that the window will contain some numbers in the ceode, this is the steps that will be navigated through via the "super tab".
+So what whould happen is: complete the first step, press <tab>, complete the second <tab> and so on so forth.
+To close a suggestion press `<Ctrl-e>`.
+
+
+To setup the cmp script, a `lua/vnmrd/cmp.lua` file was created. 
+Most part of this file was copied from the cmp plugin repo.
+Note in the config to navigate in the menu use `<C-j>` and `<C-k>`.
+If the cmp window is big enough, to traver trough it use `<C-b>` and `<C-f>`.
+`<C-Space>` manually pops-up the cmp window.
+> All the keybindings are explained in the `cmp.lua` file comments.
+
+In the file it is also possible to format the cmp window via the `formatting` function, to modify that check the cmp repo.
+Additionally, the sources from where the plugin collects snippets can be defined in the file.
+Note, when you add a plugin, it is mandatory to add it to the **source** (in `cmp.lua` file) too.
+
+
+## [7] Nerdfonts
+
+TODO
+
+## [8] LSP
+
 
