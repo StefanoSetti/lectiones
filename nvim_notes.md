@@ -195,3 +195,6 @@ The configs for LSPs are not in a file but in a directory, note that the declara
 When adding a directory in a `init.lua` file, it looks for a init file in the directory.
 
 The `lsp-installer.lua` to install LSPs, inspired from https://github.com/williamboman/nvim-lsp-installer.
+The `installer.lua` file setuo LSP capabilities, keybindings, events and specific functions, like `on_attach`.
+
+The LSPs configurations will be hosted in the `settings/` directory.
